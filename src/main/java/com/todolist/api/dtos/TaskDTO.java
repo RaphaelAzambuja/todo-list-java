@@ -1,5 +1,5 @@
 package com.todolist.api.dtos;
 
-import com.todolist.api.entities.ListEntity;
+import com.todolist.api.entities.List;
 
-public record TaskDTO(String title, ListEntity listEntity, String description, Boolean checked) {}
+public record TaskDTO(String title, List listEntity, String description, Boolean checked) {}
