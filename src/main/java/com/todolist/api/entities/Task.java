@@ -14,7 +14,7 @@ public class Task extends EntityId{
     
     @ManyToOne
     @JoinColumn(name="list_id", nullable = false)
-    private List listEntity;
+    private ListEntity listEntity;
 
     @Column(nullable = false)
     private String description;
@@ -24,7 +24,7 @@ public class Task extends EntityId{
 
     public Task() {}
 
-    public Task(String title, List listEntity, String description, Boolean checked) {
+    public Task(String title, ListEntity listEntity, String description, Boolean checked) {
         this.title = title;
         this.listEntity = listEntity;
         this.description = description;
@@ -39,11 +39,11 @@ public class Task extends EntityId{
         this.title = title;
     }
 
-    public List getListEntity() {
+    public ListEntity getListEntity() {
         return listEntity;
     }
 
-    public void setListEntity(List listEntity) {
+    public void setListEntity(ListEntity listEntity) {
         this.listEntity = listEntity;
     }
 

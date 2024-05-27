@@ -6,16 +6,16 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Lists")
-public class List extends EntityId{
+public class ListEntity extends EntityId{
     @Column(nullable = false)
     private String title;
 
     @Column(nullable = false)
     private String description;
 
-    public List() {}
+    public ListEntity() {}
 
-    public List(String title, String description) {
+    public ListEntity(String title, String description) {
         this.title = title;
         this.description = description;
     }
