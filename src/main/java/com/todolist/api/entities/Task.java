@@ -8,13 +8,13 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="tasks")
-public class TaskEntity extends EntityId{
+public class Task extends EntityId{
     @Column(nullable = false)
     private String title;
     
     @ManyToOne
     @JoinColumn(name="list_id", nullable = false)
-    private ListEntity listEntity;
+    private List listEntity;
 
     @Column(nullable = false)
     private String description;
@@ -22,9 +22,9 @@ public class TaskEntity extends EntityId{
     @Column(nullable = false)
     private Boolean checked = false;
 
-    public TaskEntity() {}
+    public Task() {}
 
-    public TaskEntity(String title, ListEntity listEntity, String description, Boolean checked) {
+    public Task(String title, List listEntity, String description, Boolean checked) {
         this.title = title;
         this.listEntity = listEntity;
         this.description = description;
@@ -39,11 +39,11 @@ public class TaskEntity extends EntityId{
         this.title = title;
     }
 
-    public ListEntity getListEntity() {
+    public List getListEntity() {
         return listEntity;
     }
 
-    public void setListEntity(ListEntity listEntity) {
+    public void setListEntity(List listEntity) {
         this.listEntity = listEntity;
     }
 
