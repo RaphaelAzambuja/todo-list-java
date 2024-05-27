@@ -13,9 +13,9 @@ public class ListEntity extends EntityId{
     @Column(nullable = false)
     private String description;
 
-    public ListEntity() {}
+    private ListEntity() {}
 
-    public ListEntity(String title, String description) {
+    private ListEntity(String title, String description) {
         this.title = title;
         this.description = description;
     }
@@ -24,15 +24,27 @@ public class ListEntity extends EntityId{
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public static class Builder {
+        private String title;
+        private String description;
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public ListEntity build() {
+            return new ListEntity(title, description);
+        }
     }
+
 }

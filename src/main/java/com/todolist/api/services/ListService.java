@@ -26,9 +26,10 @@ public class ListService {
     }
 
     public List<ListEntity> create(ListDTO listDTO) {
-        var list = new ListEntity();
-        list.setTitle(listDTO.title());
-        list.setDescription(listDTO.description());
+        ListEntity list = new ListEntity.Builder()
+                            .title(listDTO.title())
+                            .description(listDTO.description())
+                            .build();
 
         listRepository.save(list);
         return findAll();
@@ -38,8 +39,11 @@ public class ListService {
         ListEntity list = findById(id);
 
         if (list != null) {
-            list.setTitle(listDTO.title());
-            list.setDescription(listDTO.description());
+            list = new ListEntity.Builder()
+                .title(listDTO.title())
+                .description(listDTO.description())
+                .build();
+                
             listRepository.save(list);
         }
 
