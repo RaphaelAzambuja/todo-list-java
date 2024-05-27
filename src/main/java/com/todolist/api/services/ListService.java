@@ -38,13 +38,14 @@ public class ListService {
     public List<ListEntity> update(ListDTO listDTO, Long id) {
         ListEntity list = findById(id);
 
-        if (list != null) {
-            list = new ListEntity.Builder()
-                .title(listDTO.title())
-                .description(listDTO.description())
-                .build();
-                
-            listRepository.save(list);
+        if (list != null) {    
+            ListEntity updatedList = ListEntity.builder(list)
+                                        .title(listDTO.title())
+                                        .description(listDTO.description())
+                                        .build();
+
+            updatedList.setId(list.getId());
+            listRepository.save(updatedList);
         }
 
         return findAll();

@@ -20,6 +20,11 @@ public class ListEntity extends EntityId{
         this.description = description;
     }
 
+    private ListEntity(Builder builder) {
+        this.title = builder.title;
+        this.description = builder.description;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -28,9 +33,20 @@ public class ListEntity extends EntityId{
         return description;
     }
 
+    public static Builder builder(ListEntity listEntity) {
+        return new Builder(listEntity);
+    }
+
     public static class Builder {
         private String title;
         private String description;
+
+        public Builder() {}
+
+        public Builder(ListEntity listEntity) {
+            this.title = listEntity.title;
+            this.description = listEntity.description;
+        }
 
         public Builder title(String title) {
             this.title = title;
@@ -46,5 +62,4 @@ public class ListEntity extends EntityId{
             return new ListEntity(title, description);
         }
     }
-
 }
