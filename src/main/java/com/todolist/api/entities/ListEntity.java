@@ -15,11 +15,6 @@ public class ListEntity extends EntityId{
 
     private ListEntity() {}
 
-    private ListEntity(String title, String description) {
-        this.title = title;
-        this.description = description;
-    }
-
     private ListEntity(Builder builder) {
         this.title = builder.title;
         this.description = builder.description;
@@ -59,7 +54,7 @@ public class ListEntity extends EntityId{
         }
 
         public ListEntity build() {
-            return new ListEntity(title, description);
+            return new ListEntity(this);
         }
     }
 }
