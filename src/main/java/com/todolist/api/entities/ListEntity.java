@@ -1,10 +1,7 @@
 package com.todolist.api.entities;
 
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,9 +12,6 @@ public class ListEntity extends EntityId{
 
     @Column(nullable = false)
     private String description;
-
-    @OneToMany(mappedBy = "listEntity")
-    private List<Task> tasks;
 
     private ListEntity() {}
 

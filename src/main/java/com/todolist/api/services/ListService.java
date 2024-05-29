@@ -26,6 +26,7 @@ public class ListService {
     }
 
     public List<ListEntity> create(ListDTO listDTO) {
+        
         ListEntity list = new ListEntity.Builder()
                             .title(listDTO.title())
                             .description(listDTO.description())
