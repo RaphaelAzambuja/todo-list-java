@@ -1,4 +1,4 @@
-package com.todolist.api.dtos;
+package com.todolist.api.models.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

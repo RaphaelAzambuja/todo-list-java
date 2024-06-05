@@ -1,6 +1,7 @@
-package com.todolist.api.dtos;
+package com.todolist.api.models.dtos;
 
-import com.todolist.api.entities.ListEntity;
+import com.todolist.api.models.ListEntity;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -8,12 +9,12 @@ public record TaskDTO(
     @NotBlank(message = "O título não pode estar em branco")
     String title,
 
-    @NotNull(message = "A entidade da lista não pode ser nula")
-    ListEntity listEntity,
-
     @NotBlank(message = "A descrição não pode estar em branco")
     String description,
 
     @NotNull(message = "A flag 'checked' não pode ser nula")
-    Boolean checked
+    Boolean checked,
+
+    @NotNull(message = "A tarefa deve ser atribuida a uma lista de tarefas")
+    ListEntity listEntity
 ) {}

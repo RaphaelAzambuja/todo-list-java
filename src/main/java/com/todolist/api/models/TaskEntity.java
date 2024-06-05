@@ -1,4 +1,4 @@
-package com.todolist.api.entities;
+package com.todolist.api.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,13 +8,9 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="tasks")
-public class Task extends EntityId{
+public class TaskEntity extends EntityId {
     @Column(nullable = false)
     private String title;
-    
-    @ManyToOne
-    @JoinColumn(name="list_id", nullable = false)
-    private ListEntity listEntity;
 
     @Column(nullable = false)
     private String description;
@@ -22,13 +18,17 @@ public class Task extends EntityId{
     @Column(nullable = false)
     private Boolean checked = false;
 
-    private Task() {}
+    @ManyToOne
+    @JoinColumn(name = "list", nullable = false)
+    private ListEntity listEntity;
 
-    private Task(Builder builder) {
+    private TaskEntity() {}
+
+    private TaskEntity(Builder builder) {
         this.title = builder.title;
-        this.listEntity = builder.listEntity;
         this.description = builder.description;
         this.checked = builder.checked;
+        this.listEntity = builder.listEntity;
     }
 
     public String getTitle() {
@@ -47,7 +47,7 @@ public class Task extends EntityId{
         return checked;
     }
 
-    public static Builder builder(Task task) {
+    public static Builder builder(TaskEntity task) {
         return new Builder(task);
     }
 
@@ -59,7 +59,7 @@ public class Task extends EntityId{
 
         public Builder() {}
 
-        public Builder(Task task) {
+        public Builder(TaskEntity task) {
             this.title = task.title;
             this.description = task.description;
             this.listEntity = task.listEntity;
@@ -86,8 +86,8 @@ public class Task extends EntityId{
             return this;
         }
 
-        public Task build() {
-            return new Task(this);
+        public TaskEntity build() {
+            return new TaskEntity(this);
         }
     }
 }

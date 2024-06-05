@@ -3,8 +3,9 @@ package com.todolist.api.services;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
-import com.todolist.api.dtos.ListDTO;
-import com.todolist.api.entities.ListEntity;
+
+import com.todolist.api.models.ListEntity;
+import com.todolist.api.models.dtos.ListDTO;
 import com.todolist.api.repositories.ListRepository;
 
 @Service

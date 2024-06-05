@@ -1,8 +1,9 @@
 package com.todolist.api.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
-import com.todolist.api.dtos.ListDTO;
-import com.todolist.api.entities.ListEntity;
+
+import com.todolist.api.models.ListEntity;
+import com.todolist.api.models.dtos.ListDTO;
 import com.todolist.api.services.ListService;
 import jakarta.validation.Valid;
 import java.util.List;

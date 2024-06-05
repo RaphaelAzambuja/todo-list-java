@@ -1,17 +1,23 @@
-package com.todolist.api.entities;
+package com.todolist.api.models;
+
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Lists")
-public class ListEntity extends EntityId{
+public class ListEntity extends EntityId {
     @Column(nullable = false)
     private String title;
 
     @Column(nullable = false)
     private String description;
+
+    @OneToMany(mappedBy = "listEntity")
+    private List<TaskEntity> tasks;
 
     private ListEntity() {}
 

@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
-import com.todolist.api.dtos.TaskDTO;
-import com.todolist.api.entities.Task;
+
+import com.todolist.api.models.TaskEntity;
+import com.todolist.api.models.dtos.TaskDTO;
 import com.todolist.api.repositories.TaskRepository;
 
 @Service
@@ -17,36 +18,36 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<Task> findAll() {
+    public List<TaskEntity> findAll() {
         return taskRepository.findAll();
     }
 
-    public Task findById(Long id) {
-        Optional<Task> task = taskRepository.findById(id);
+    public TaskEntity findById(Long id) {
+        Optional<TaskEntity> task = taskRepository.findById(id);
         return task.orElse(null);
     }
 
-    public List<Task> create(TaskDTO taskDTO) {        
-        Task task = new Task.Builder()
+    public List<TaskEntity> create(TaskDTO taskDTO) {        
+        TaskEntity task = new TaskEntity.Builder()
                         .title(taskDTO.title())
                         .description(taskDTO.description())
-                        .listEntity(taskDTO.listEntity())
                         .checked(taskDTO.checked())
+                        .listEntity(taskDTO.listEntity())
                         .build();
 
         taskRepository.save(task);
         return findAll();
     }
 
-    public List<Task> update(TaskDTO taskDTO, Long id) {
-        Task task = findById(id);
+    public List<TaskEntity> update(TaskDTO taskDTO, Long id) {
+        TaskEntity task = findById(id);
 
         if (task != null) {
-            Task updateTask = Task.builder(task)
+            TaskEntity updateTask = TaskEntity.builder(task)
                             .title(taskDTO.title())
                             .description(taskDTO.description())
-                            .listEntity(taskDTO.listEntity())
                             .checked(taskDTO.checked())
+                            .listEntity(taskDTO.listEntity())
                             .build();
 
             updateTask.setId(task.getId());
@@ -56,8 +57,8 @@ public class TaskService {
         return findAll();
     }
 
-    public List<Task> delete(Long id) {
-        Task task = findById(id);
+    public List<TaskEntity> delete(Long id) {
+        TaskEntity task = findById(id);
 
         if (task != null) {
             taskRepository.delete(task);
